@@ -1,4 +1,4 @@
-# OCT Retinal Classification using Deep Learning 🧠🩺
+# OCT Retinal Classification using Deep Learning
 
 This project focuses on the automated classification of retinal abnormalities from Optical Coherence Tomography (OCT) images using state-of-the-art deep learning architectures.
 
