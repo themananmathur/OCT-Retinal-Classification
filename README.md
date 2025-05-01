@@ -1,58 +1,83 @@
-# OCT Retinal Classification using Deep Learning
+## OCT Retinal Disease Classification Using Deep Learning
 
-This project focuses on the automated classification of retinal abnormalities from Optical Coherence Tomography (OCT) images using state-of-the-art deep learning architectures.
-
-# Datasets Used
-
-- OCTID: Multi-class dataset with 5 retinal classes  
-- OCTDL: Binary dataset with Normal and Abnormal classification  
-- (Future Work) OCT5k: Multi-disease and multi-graded dataset
-
-# Models Trained
-
-- `DenseNet121`
-- `MobileNetV2`
-- `EfficientNetV2B2`
-- `Swin Transformer`
-
-> All models trained with 5-Fold Stratified Cross-Validation, class weighting, learning rate schedulers, and extensive augmentation.
-
-# Results
-
-- EfficientNetV2B2 (OCTID): ~90.3% Accuracy  
-- EfficientNetV2B2 (OCTDL): ~92.7% Accuracy  
-- Confusion Matrices and Classification Reports saved in `/logs/`
-
-# Model Weights
-
-All trained model weights hosted on Hugging Face:
-[https://huggingface.co/mananmathur16/OCT-Retinal-Classification](https://huggingface.co/mananmathur16/OCT-Retinal-Classification)
-
-# Technologies
-
-- Python, PyTorch, Transformers (Hugging Face)
-- Jupyter, Google Colab, TensorBoard
-- Matplotlib, Seaborn, Sklearn
-
-# Author
-
-Manan Mathur  
-B.Tech IT, MIT Manipal  
-Midterm Project (2025)
+A high-performance pipeline for automated classification of retinal pathologies from Optical Coherence Tomography (OCT) scans using state-of-the-art deep learning architectures.
 
 ---
 
-# Folder Structure
+## Datasets
+
+- **OCTID**  
+  Multi-class classification (5 classes):  
+  *Macular Hole, Age-Related Macular Degeneration, Central Serous Retinopathy, Diabetic Retinopathy, Normal*
+
+- **OCTDL**  
+  Binary classification:  
+  *Normal vs Abnormal*
+
+- **(Planned)** OCT5k  
+  Multi-disease, multi-grade dataset for clinically realistic generalization tasks.
+
+---
+
+## Architectures
+
+| Model              | Summary                                       |
+|--------------------|-----------------------------------------------|
+| DenseNet121        | Densely connected CNN for efficient feature reuse |
+| MobileNetV2        | Lightweight architecture optimized for speed and accuracy |
+| EfficientNetV2B2   | High-accuracy, compound-scaled CNN architecture |
+| Swin Transformer   | Hierarchical Vision Transformer using shifted windows |
+
+All models were trained using:
+- 5-Fold Stratified Cross-Validation
+- Class-balanced loss functions
+- OneCycle learning rate scheduling
+- Extensive image augmentations for generalization
+
+---
+
+## Results
+
+| Dataset | Model            | Accuracy (%) |
+|---------|------------------|--------------|
+| OCTID   | EfficientNetV2B2 | ~90.3        |
+| OCTDL   | EfficientNetV2B2 | ~92.7        |
+
+- All metrics, confusion matrices, and classification reports are stored under `/logs/`.
+- Best model checkpoints are automatically selected based on validation F1-score.
+
+---
+
+## Model Weights
+
+All trained weights are hosted on Hugging Face:  
+[https://huggingface.co/mananmathur16/OCT-Retinal-Classification](https://huggingface.co/mananmathur16/OCT-Retinal-Classification)
+
+---
+
+## Technology Stack
+
+- Python 3.10  
+- PyTorch, Hugging Face Transformers  
+- Scikit-learn, OpenCV  
+- Jupyter, Colab Pro, TensorBoard  
+- Matplotlib, Seaborn
+
+---
+
+## Project Structure
+
+```plaintext
 OCT-Retinal-Classification/
-├── models/ # Final saved weights (.pth, .keras)
-├── notebooks/ # All training notebooks
-├── utils/ # Utility scripts
-├── logs/ # Training logs, classification reports
-├── README.md # This file
-└── requirements.txt # Dependencies
+├── models/          # Trained model weights
+├── notebooks/       # Training notebooks per model and dataset
+├── utils/           # Custom preprocessing, loaders, and evaluation utilities
+├── logs/            # Training logs, classification reports, and visualizations
+├── README.md        # Project overview
+└── requirements.txt # All dependencies
 
 
-# Citation
+## Citation
 
 [1] P. Gholami and H. Rivaz, “Octid: Optical coherence tomography image database,” Computers and Electrical Engineering, vol. 81, p. 106522, 2020.
 
